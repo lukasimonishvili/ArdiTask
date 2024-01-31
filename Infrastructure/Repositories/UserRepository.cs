@@ -29,7 +29,7 @@ namespace Infrastructure.Repositories
             var userInsuranceExists = _context.UserInsurances.Where(u => u.UserId == UserId && u.InsuranceId == InsuranceId);
             if (userInsuranceExists.Count() > 0)
             {
-                throw new DataExistsExtention("User already has this insurance");
+                throw new DataExistsException("User already has this insurance");
             }
 
             var userInsurance = new UserInsurance();

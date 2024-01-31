@@ -35,11 +35,11 @@ namespace Application.Controllers
             {
                 return NotFound(ex.Message);
             }
-            catch (NotIntegerExtension ex)
+            catch (NotIntegerException ex)
             {
                 return BadRequest(ex.Message);
             }
-            catch (DataExistsExtention ex)
+            catch (DataExistsException ex)
             {
                 return Conflict(ex.Message);
             }
@@ -81,7 +81,7 @@ namespace Application.Controllers
                 _userService.DeleteInsuranceForUser(UserId, InsuranceId);
                 return Ok("deleted");
             }
-            catch (DataExistsExtention ex)
+            catch (DataExistsException ex)
             {
                 return NotFound(ex.Message);
             }
@@ -95,7 +95,7 @@ namespace Application.Controllers
                 _userService.DeleteUser(id);
                 return Ok("deleted");
             }
-            catch (DataExistsExtention ex)
+            catch (DataExistsException ex)
             {
                 return NotFound(ex.Message);
             }

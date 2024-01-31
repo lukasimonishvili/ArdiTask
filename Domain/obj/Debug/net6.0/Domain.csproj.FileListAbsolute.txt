@@ -10,3 +10,6 @@ C:\Users\simon\Documents\GitHub\ArdiTask\Domain\obj\Debug\net6.0\Domain.dll
 C:\Users\simon\Documents\GitHub\ArdiTask\Domain\obj\Debug\net6.0\refint\Domain.dll
 C:\Users\simon\Documents\GitHub\ArdiTask\Domain\obj\Debug\net6.0\Domain.pdb
 C:\Users\simon\Documents\GitHub\ArdiTask\Domain\obj\Debug\net6.0\ref\Domain.dll
+C:\Users\simon\Documents\GitHub\ArdiTask\Domain\bin\Debug\net6.0\Infrastructure.dll
+C:\Users\simon\Documents\GitHub\ArdiTask\Domain\bin\Debug\net6.0\Infrastructure.pdb
+C:\Users\simon\Documents\GitHub\ArdiTask\Domain\obj\Debug\net6.0\Domain.csproj.CopyComplete

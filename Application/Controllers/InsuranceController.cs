@@ -1,5 +1,4 @@
-﻿using Application.Validators;
-using Domain.DTO;
+﻿using Domain.DTO;
 using Domain.Interfaces;
 using Infrastructure.Exceptions;
 using Microsoft.AspNetCore.Mvc;
@@ -20,15 +19,15 @@ namespace Application.Controllers
         [HttpPost("Add")]
         public IActionResult AddInsurance([FromBody] InsuranceDTO insurance)
         {
-            var Validator = new AddInsuranceValidator().Validate(insurance);
-            if (!Validator.IsValid)
+            try
             {
-                var message = Validator.Errors.Count > 1 ? "More then 1 validation error detected" : Validator.Errors[0].ErrorMessage;
-                return BadRequest(message);
+                _insuranceService.AddInsurance(insurance);
+                return Ok("Insurance created");
             }
-
-            _insuranceService.AddInsurance(insurance);
-            return Ok("Insurance created");
+            catch (ValidateException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpGet("GetAll")]
@@ -64,7 +63,7 @@ namespace Application.Controllers
             {
                 return NotFound(ex.Message);
             }
-            catch (NotIntegerExtension ex)
+            catch (NotIntegerException ex)
             {
                 return BadRequest(ex.Message);
             }

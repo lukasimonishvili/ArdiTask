@@ -1,10 +1,17 @@
 ﻿using Domain.Entities;
+using Infrastructure.Configs;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence
 {
     public class DataBaseContext : DbContext
     {
+        private readonly AppSettingsConfig _config;
+
+        public DataBaseContext()
+        {
+            _config = new AppSettingsConfig();
+        }
 
         public DbSet<User> Users { get; set; }
         public DbSet<Insurance> Insurances { get; set; }
@@ -30,9 +37,7 @@ namespace Infrastructure.Persistence
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(
-                "Server=localhost\\SQLEXPRESS;Database=LukaSimonishviliArdiDB;Trusted_Connection=True;MultipleActiveResultSets=True"
-            );
+            optionsBuilder.UseSqlServer(_config.connectionString);
         }
     }
 }
