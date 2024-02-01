@@ -9,7 +9,7 @@ namespace Domain.Interfaces
         List<InsuranceGetDTO> GetAllInsurances();
         List<InsuranceGetDTO> GetInsurancesByUserId(string userId);
         InsuranceGetDTO GetInsuranceById(int id);
-        void UpdateInsurance(InsuranceUpdateDTO insurance);
-        void DeleteInsurance(int id);
+        string UpdateInsurance(InsuranceUpdateDTO insurance);
+        string DeleteInsurance(int id);
     }
 }

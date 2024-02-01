@@ -4,7 +4,7 @@ namespace Domain.Interfaces
 {
     public interface IInsuranceRepository
     {
-        void AddInsuranceToDb(Insurance insurance);
+        string AddInsuranceToDb(Insurance insurance);
         IEnumerable<Insurance> GetAllInsurances();
         Insurance GetInsuranceById(int id);
         IEnumerable<Insurance> GetInsurancesByUserId(int userId);

@@ -10,10 +10,11 @@ namespace Infrastructure.Repositories
     {
         private readonly DataBaseContext _context = new();
 
-        public void AddInsuranceToDb(Insurance insurance)
+        public string AddInsuranceToDb(Insurance insurance)
         {
             _context.Insurances.Add(insurance);
             _context.SaveChanges();
+            return "Success";
         }
 
         public void DeleteInsurance(int id)

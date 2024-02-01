@@ -46,14 +46,14 @@ namespace Infrastructure.Services
             if (!Validator.IsValid)
             {
                 var message = Validator.Errors.Count > 1 ? "More then 1 validation error detected" : Validator.Errors[0].ErrorMessage;
-                throw new ValidateException(message);
+                throw new CustomValidateException(message);
             }
             var adaptUser = user.Adapt<User>();
             _userRepository.AddUserToDB(adaptUser);
-            return "Success";
+            return "success";
         }
 
-        public void DeleteInsuranceForUser(string UserId, string InsuranceId)
+        public string DeleteInsuranceForUser(string UserId, string InsuranceId)
         {
             try
             {
@@ -61,10 +61,11 @@ namespace Infrastructure.Services
                 var intInsuranceId = Convert.ToInt32(InsuranceId);
 
                 _userRepository.DeleteInsuraceForUser(intUserId, intInsuranceId);
+                return "success";
             }
             catch (DataNotFoundException ex)
             {
-                throw new DataExistsException(ex.Message);
+                throw new DataNotFoundException(ex.Message);
             }
             catch
             {
@@ -72,9 +73,10 @@ namespace Infrastructure.Services
             }
         }
 
-        public void DeleteUser(int UsertId)
+        public string DeleteUser(int UsertId)
         {
             _userRepository.DeleteUser(UsertId);
+            return "success";
         }
 
         public UserGetDTO GetUserById(int userId)
@@ -82,10 +84,12 @@ namespace Infrastructure.Services
             return _userRepository.GetuerById(userId);
         }
 
-        public void UpdateUser(UserUpdaetDTO user)
+        public string UpdateUser(UserUpdaetDTO user)
         {
             var adaptUser = user.Adapt<User>();
             _userRepository.UpdateUser(adaptUser);
+
+            return "success";
         }
     }
 }

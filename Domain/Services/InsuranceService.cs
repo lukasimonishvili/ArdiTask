@@ -2,7 +2,6 @@
 using Domain.DTO;
 using Domain.Entities;
 using Domain.Interfaces;
-using FluentValidation;
 using Infrastructure.Exceptions;
 using Mapster;
 
@@ -23,7 +22,7 @@ namespace Infrastructure.Services
             if (!Validator.IsValid)
             {
                 var message = Validator.Errors.Count > 1 ? "More then 1 validation error detected" : Validator.Errors[0].ErrorMessage;
-                throw new ValidationException(message);
+                throw new CustomValidateException(message);
             }
 
             var adaptInsurance = insurance.Adapt<Insurance>();
@@ -31,9 +30,10 @@ namespace Infrastructure.Services
             return "success";
         }
 
-        public void DeleteInsurance(int id)
+        public string DeleteInsurance(int id)
         {
             _insuranceRepository.DeleteInsurance(id);
+            return "success";
         }
 
         public List<InsuranceGetDTO> GetAllInsurances()
@@ -80,10 +80,12 @@ namespace Infrastructure.Services
             }
         }
 
-        public void UpdateInsurance(InsuranceUpdateDTO insurance)
+        public string UpdateInsurance(InsuranceUpdateDTO insurance)
         {
             var adaptedInsurance = insurance.Adapt<Insurance>();
             _insuranceRepository.UpdateInsurance(adaptedInsurance);
+
+            return "success";
         }
     }
 }

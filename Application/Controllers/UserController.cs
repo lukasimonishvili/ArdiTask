@@ -81,7 +81,7 @@ namespace Application.Controllers
                 _userService.DeleteInsuranceForUser(UserId, InsuranceId);
                 return Ok("deleted");
             }
-            catch (DataExistsException ex)
+            catch (DataNotFoundException ex)
             {
                 return NotFound(ex.Message);
             }

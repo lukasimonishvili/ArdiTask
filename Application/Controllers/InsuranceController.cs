@@ -24,7 +24,7 @@ namespace Application.Controllers
                 _insuranceService.AddInsurance(insurance);
                 return Ok("Insurance created");
             }
-            catch (ValidateException ex)
+            catch (CustomValidateException ex)
             {
                 return BadRequest(ex.Message);
             }

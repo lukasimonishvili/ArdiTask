@@ -7,8 +7,8 @@ namespace Domain.Interfaces
         string AddUser(UserDTO user);
         string AddInsuranceToUser(string userId, string InsuranceId);
         UserGetDTO GetUserById(int userId);
-        void UpdateUser(UserUpdaetDTO user);
-        void DeleteInsuranceForUser(string UserId, string InsuranceId);
-        void DeleteUser(int UsertId);
+        string UpdateUser(UserUpdaetDTO user);
+        string DeleteInsuranceForUser(string UserId, string InsuranceId);
+        string DeleteUser(int UsertId);
     }
 }
